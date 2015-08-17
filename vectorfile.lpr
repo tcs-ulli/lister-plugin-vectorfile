@@ -10,7 +10,7 @@ uses
   fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,pdfvectorialreader,
   cdrvectorialreader,docxvectorialwriter,svgvectorialreader,svgzvectorialreader,
   odgvectorialreader,mathmlvectorialreader,epsvectorialreader,lazvectorialreader,
-  lasvectorialreader,htmlvectorialreader,ftfont;
+  lasvectorialreader,htmlvectorialreader, fpvectorialpkg_nogui,FPWritePNG;
 
 procedure ListGetDetectString(DetectString:pchar;maxlen:integer); dcpcall;
 begin
@@ -30,7 +30,9 @@ var
   CanvasSize: TPoint;
   Drawer: TFPMemoryImage;
   Canvas: TFPImageCanvas;
-  AFont: TFreeTypeFont;
+  DeltaX: Integer;
+  DeltaY: Integer;
+  aPage: TvVectorialPage;
 begin
   Result := '';
   // First check the in input
@@ -60,32 +62,18 @@ begin
     Canvas.Brush.FPColor := colWhite;
     Canvas.Brush.Style := bsSolid;
     Canvas.FillRect(0, 0, Drawer.Width, Drawer.Height);
-    ftfont.InitEngine;
-    AFont:=TFreeTypeFont.Create;
-    {$ifndef CPUARM}
-    {$ifdef LINUX}
-    FontMgr.SearchPath:='/usr/share/fonts/truetype/ttf-dejavu/';
-    AFont.Name:='DejaVuSans';
-    aPrinter.Font:=AFont;
-    {$endif}
-    {$endif}
-    Canvas.Font:=AFont;
     try
-      DrawFPVectorialToCanvas(
-        TvVectorialPage(Vec.GetPage(0)),
-        Canvas,
-        FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-        Drawer.Height - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-        Scale,
-        -1 * Scale);
+      aPage := TvVectorialPage(Vec.GetPage(0));
+      aPage.AutoFit(canvas,Drawer.Width,Drawer.Height,DeltaX,DeltaY,Scale);
+      aPage.Render(Canvas,DeltaX,DeltaY,Scale,Scale);
       Drawer.SaveToFile(OutputPath+'thumb.png');
       Result := PChar(OutputPath+'thumb.png');
     except
       Result := '';
     end;
   finally
+    //Canvas.Free;
     Drawer.Free;
-    Canvas.Free;
     Vec.Free;
   end;
 end;
