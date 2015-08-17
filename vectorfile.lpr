@@ -7,14 +7,15 @@ uses
   Classes,
   sysutils,
   WLXPlugin,
-  fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,{pdfvectorialreader,}
+  fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,pdfvectorialreader,
   cdrvectorialreader,docxvectorialwriter,svgvectorialreader,svgzvectorialreader,
   odgvectorialreader,mathmlvectorialreader,epsvectorialreader,lazvectorialreader,
-  lasvectorialreader,htmlvectorialreader;
+  lasvectorialreader,htmlvectorialreader,ftfont;
 
 procedure ListGetDetectString(DetectString:pchar;maxlen:integer); dcpcall;
 begin
-  StrCopy(DetectString, 'EXT="PDF"|EXT="CDR"|EXT="DOCX"|EXT="DXF"|EXT="SVG"|EXT="SVGZ"|EXT="ODG"|EXT="MML"|EXT="PS"|EXT="LAZ"|EXT="LAS"|EXT="HTML"');
+  //EXT="PDF"|
+  StrCopy(DetectString, 'EXT="CDR"|EXT="DOCX"|EXT="DXF"|EXT="SVG"|EXT="SVGZ"|EXT="ODG"|EXT="MML"|EXT="PS"|EXT="LAZ"|EXT="LAS"|EXT="HTML"');
 end;
 
 function ListGetPreviewBitmapFile(FileToLoad:pchar;OutputPath:pchar;width,height:integer;
@@ -29,6 +30,7 @@ var
   CanvasSize: TPoint;
   Drawer: TFPMemoryImage;
   Canvas: TFPImageCanvas;
+  AFont: TFreeTypeFont;
 begin
   Result := '';
   // First check the in input
@@ -58,15 +60,29 @@ begin
     Canvas.Brush.FPColor := colWhite;
     Canvas.Brush.Style := bsSolid;
     Canvas.FillRect(0, 0, Drawer.Width, Drawer.Height);
-    DrawFPVectorialToCanvas(
-      TvVectorialPage(Vec.GetPage(0)),
-      Canvas,
-      FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-      Drawer.Height - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-      Scale,
-      -1 * Scale);
-    Drawer.SaveToFile(OutputPath+'thumb.png');
-    Result := PChar(OutputPath+'thumb.png');
+    ftfont.InitEngine;
+    AFont:=TFreeTypeFont.Create;
+    {$ifndef CPUARM}
+    {$ifdef LINUX}
+    FontMgr.SearchPath:='/usr/share/fonts/truetype/ttf-dejavu/';
+    AFont.Name:='DejaVuSans';
+    aPrinter.Font:=AFont;
+    {$endif}
+    {$endif}
+    Canvas.Font:=AFont;
+    try
+      DrawFPVectorialToCanvas(
+        TvVectorialPage(Vec.GetPage(0)),
+        Canvas,
+        FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
+        Drawer.Height - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
+        Scale,
+        -1 * Scale);
+      Drawer.SaveToFile(OutputPath+'thumb.png');
+      Result := PChar(OutputPath+'thumb.png');
+    except
+      Result := '';
+    end;
   finally
     Drawer.Free;
     Canvas.Free;
