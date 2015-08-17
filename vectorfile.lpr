@@ -10,7 +10,7 @@ uses
   fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,pdfvectorialreader,
   cdrvectorialreader,docxvectorialwriter,svgvectorialreader,svgzvectorialreader,
   odgvectorialreader,mathmlvectorialreader,epsvectorialreader,lazvectorialreader,
-  lasvectorialreader,htmlvectorialreader,Graphics,Forms, Interfaces;
+  lasvectorialreader,htmlvectorialreader, fpvectorialpkg_nogui,FPWritePNG;
 
 procedure ListGetDetectString(DetectString:pchar;maxlen:integer); dcpcall;
 begin
@@ -28,16 +28,16 @@ var
   Scale : double = 1.0;
   Vec: TvVectorialDocument;
   CanvasSize: TPoint;
-  aFile : string;
-  Picture : TPicture;
-  Canvas: TCanvas;
-  aBitmap : TBitmap;
+  Drawer: TFPMemoryImage;
+  Canvas: TFPImageCanvas;
+  DeltaX: Integer;
+  DeltaY: Integer;
+  aPage: TvVectorialPage;
 begin
   Result := '';
   // First check the in input
   //if not CheckInput() then Exit;
 
-  Picture := TPicture.Create;
   Vec := TvVectorialDocument.Create;
   try
     Vec.ReadFromFile(FileToLoad);
@@ -56,32 +56,23 @@ begin
     else CanvasSize.Y := Round(Vec.Height * Scale);
     if CanvasSize.Y < Height then CanvasSize.Y := Height;
 
-    aBitmap := TBitmap.Create;
-    aBitmap.Width:=CanvasSize.x;
-    aBitmap.Height:=CanvasSize.y;
-    Canvas := aBitmap.Canvas;
+    Drawer := TFPMemoryImage.create(CanvasSize.X,CanvasSize.Y);
+    Canvas := TFPImageCanvas.create(Drawer);
 
-    Canvas.Brush.Color := clWhite;
+    Canvas.Brush.FPColor := colWhite;
     Canvas.Brush.Style := bsSolid;
-    Canvas.FillRect(0, 0, CanvasSize.x, CanvasSize.y);
+    Canvas.FillRect(0, 0, Drawer.Width, Drawer.Height);
     try
-      DrawFPVectorialToCanvas(
-        TvVectorialPage(Vec.GetPage(0)),
-        Canvas,
-        FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-        CanvasSize.y - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-        Scale,
-        -1 * Scale);
-      Picture.Assign(aBitmap);
-      Picture.SaveToFile(OutputPath+'thumb.png');
-      aFile := OutputPath+'thumb.png';
-      Result := PChar(aFile);
+      aPage := TvVectorialPage(Vec.GetPage(0));
+      aPage.AutoFit(canvas,Drawer.Width,Drawer.Height,DeltaX,DeltaY,Scale);
+      aPage.Render(Canvas,DeltaX,DeltaY,Scale,Scale);
+      Drawer.SaveToFile(OutputPath+'thumb.png');
+      Result := PChar(OutputPath+'thumb.png');
     except
       Result := '';
     end;
   finally
-    aBitmap.Free;
-    Picture.Free;
+    Drawer.Free;
     Vec.Free;
   end;
 end;
@@ -91,6 +82,5 @@ exports
   ListGetPreviewBitmapFile;
 
 begin
-  Application.Initialize;
 end.
 
