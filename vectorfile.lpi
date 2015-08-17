@@ -33,7 +33,7 @@
     </RunParams>
     <RequiredPackages Count="1">
       <Item1>
-        <PackageName Value="fpvectorialpkg"/>
+        <PackageName Value="fpvectorialpkg_nogui"/>
       </Item1>
     </RequiredPackages>
     <Units Count="1">
@@ -73,7 +73,6 @@ end;"/>
         <RangeChecks Value="True"/>
         <StackChecks Value="True"/>
       </Checks>
-      <VerifyObjMethodCallValidity Value="True"/>
     </CodeGeneration>
     <Linking>
       <Debugging>

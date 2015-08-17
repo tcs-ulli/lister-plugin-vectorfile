@@ -10,7 +10,7 @@ uses
   fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,pdfvectorialreader,
   cdrvectorialreader,docxvectorialwriter,svgvectorialreader,svgzvectorialreader,
   odgvectorialreader,mathmlvectorialreader,epsvectorialreader,lazvectorialreader,
-  lasvectorialreader,htmlvectorialreader,ftfont;
+  lasvectorialreader,htmlvectorialreader,Graphics,Forms, Interfaces;
 
 procedure ListGetDetectString(DetectString:pchar;maxlen:integer); dcpcall;
 begin
@@ -28,14 +28,16 @@ var
   Scale : double = 1.0;
   Vec: TvVectorialDocument;
   CanvasSize: TPoint;
-  Drawer: TFPMemoryImage;
-  Canvas: TFPImageCanvas;
-  AFont: TFreeTypeFont;
+  aFile : string;
+  Picture : TPicture;
+  Canvas: TCanvas;
+  aBitmap : TBitmap;
 begin
   Result := '';
   // First check the in input
   //if not CheckInput() then Exit;
 
+  Picture := TPicture.Create;
   Vec := TvVectorialDocument.Create;
   try
     Vec.ReadFromFile(FileToLoad);
@@ -54,38 +56,32 @@ begin
     else CanvasSize.Y := Round(Vec.Height * Scale);
     if CanvasSize.Y < Height then CanvasSize.Y := Height;
 
-    Drawer := TFPMemoryImage.create(CanvasSize.X,CanvasSize.Y);
-    Canvas := TFPImageCanvas.create(Drawer);
+    aBitmap := TBitmap.Create;
+    aBitmap.Width:=CanvasSize.x;
+    aBitmap.Height:=CanvasSize.y;
+    Canvas := aBitmap.Canvas;
 
-    Canvas.Brush.FPColor := colWhite;
+    Canvas.Brush.Color := clWhite;
     Canvas.Brush.Style := bsSolid;
-    Canvas.FillRect(0, 0, Drawer.Width, Drawer.Height);
-    ftfont.InitEngine;
-    AFont:=TFreeTypeFont.Create;
-    {$ifndef CPUARM}
-    {$ifdef LINUX}
-    FontMgr.SearchPath:='/usr/share/fonts/truetype/ttf-dejavu/';
-    AFont.Name:='DejaVuSans';
-    aPrinter.Font:=AFont;
-    {$endif}
-    {$endif}
-    Canvas.Font:=AFont;
+    Canvas.FillRect(0, 0, CanvasSize.x, CanvasSize.y);
     try
       DrawFPVectorialToCanvas(
         TvVectorialPage(Vec.GetPage(0)),
         Canvas,
         FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
-        Drawer.Height - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
+        CanvasSize.y - FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS,
         Scale,
         -1 * Scale);
-      Drawer.SaveToFile(OutputPath+'thumb.png');
-      Result := PChar(OutputPath+'thumb.png');
+      Picture.Assign(aBitmap);
+      Picture.SaveToFile(OutputPath+'thumb.png');
+      aFile := OutputPath+'thumb.png';
+      Result := PChar(aFile);
     except
       Result := '';
     end;
   finally
-    Drawer.Free;
-    Canvas.Free;
+    aBitmap.Free;
+    Picture.Free;
     Vec.Free;
   end;
 end;
@@ -95,5 +91,6 @@ exports
   ListGetPreviewBitmapFile;
 
 begin
+  Application.Initialize;
 end.
 
