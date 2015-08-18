@@ -40,8 +40,14 @@ begin
 
   Vec := TvVectorialDocument.Create;
   try
-    Vec.ReadFromFile(FileToLoad);
-
+    try
+      Vec.ReadFromFile(FileToLoad);
+    except
+      begin
+        vec.Free;
+        exit;
+      end;
+    end;
 
     // We need to be robust, because sometimes the document size won't be given
     // also give up drawing everything if we need more then 4MB of RAM for the image
