@@ -7,7 +7,7 @@ uses
   Classes,
   sysutils,
   WLXPlugin,
-  fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader,pdfvectorialreader,
+  fpcanvas, fpvectorial, fpvtocanvas, fpimage, FPImgCanv,dxfvectorialreader{,pdfvectorialreader},
   cdrvectorialreader,docxvectorialwriter,svgvectorialreader,svgzvectorialreader,
   odgvectorialreader,mathmlvectorialreader,epsvectorialreader,lazvectorialreader,
   lasvectorialreader,htmlvectorialreader, fpvectorialpkg_nogui,FPWritePNG;
@@ -26,7 +26,7 @@ const
   FPVVIEWER_SPACE_FOR_NEGATIVE_COORDS = 100;
 var
   Scale : double = 1.0;
-  Vec: TvVectorialDocument;
+  Vec: TvVectorialDocument = nil;
   CanvasSize: TPoint;
   Drawer: TFPMemoryImage;
   Canvas: TFPImageCanvas;
@@ -44,7 +44,7 @@ begin
       Vec.ReadFromFile(FileToLoad);
     except
       begin
-        vec.Free;
+        FreeAndNil(vec);
         exit;
       end;
     end;
@@ -70,7 +70,7 @@ begin
     Canvas.FillRect(0, 0, Drawer.Width, Drawer.Height);
     try
       aPage := TvVectorialPage(Vec.GetPage(0));
-      aPage.AutoFit(canvas,Drawer.Width,Drawer.Height,DeltaX,DeltaY,Scale);
+      aPage.AutoFit(canvas,Drawer.Width,Drawer.Height,Drawer.Height,DeltaX,DeltaY,Scale);
       aPage.Render(Canvas,DeltaX,DeltaY,Scale,Scale);
       Drawer.SaveToFile(OutputPath+'thumb.png');
       Result := PChar(OutputPath+'thumb.png');
@@ -79,13 +79,50 @@ begin
     end;
   finally
     Drawer.Free;
-    Vec.Free;
+    FreeAndNil(Vec);
+  end;
+end;
+
+function ListGetText(FileToLoad:pchar;contentbuf:pchar;contentbuflen:integer):pchar; dcpcall;
+var
+  aPage: TvVectorialPage;
+  Vec: TvVectorialDocument = nil;
+  tmpRes : string = '';
+  i: Integer;
+begin
+  Result := '';
+  // First check the in input
+  //if not CheckInput() then Exit;
+
+  Vec := TvVectorialDocument.Create;
+  try
+    try
+      Vec.ReadFromFile(FileToLoad);
+    except
+      begin
+        FreeAndNil(vec);
+        exit;
+      end;
+    end;
+
+    try
+      aPage := TvVectorialPage(Vec.GetPage(0));
+      for i := 0 to aPage.GetEntitiesCount-1 do
+        if aPage.Entities[i] is TvText then
+          tmpRes+=TvText(aPage.Entities[i]).Value.Text+' ';
+      Result := PChar(tmpRes);
+    except
+      Result := '';
+    end;
+  finally
+    FreeAndNil(Vec);
   end;
 end;
 
 exports
   ListGetDetectString,
-  ListGetPreviewBitmapFile;
+  ListGetPreviewBitmapFile,
+  ListGetText;
 
 begin
 end.

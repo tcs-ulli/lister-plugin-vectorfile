@@ -2,14 +2,14 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="9"/>
-    <Units Count="50">
+    <Units Count="54">
       <Unit0>
         <Filename Value="vectorfile.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="54"/>
-        <CursorPos X="9" Y="42"/>
-        <UsageCount Value="45"/>
+        <TopLine Value="82"/>
+        <CursorPos X="29" Y="113"/>
+        <UsageCount Value="49"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -167,37 +167,34 @@
       </Unit24>
       <Unit25>
         <Filename Value="../../components/fpvectorial/fpvtocanvas.pas"/>
-        <UnitName Value="fpvtocanvas"/>
         <EditorIndex Value="9"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <UnitName Value="fpvectorial"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="8787"/>
-        <CursorPos Y="8814"/>
-        <UsageCount Value="11"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="633"/>
+        <CursorPos X="9" Y="657"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
         <Filename Value="../../components/fpvectorial/fpvutils.pas"/>
-        <UnitName Value="fpvutils"/>
         <EditorIndex Value="8"/>
-        <CursorPos X="3" Y="14"/>
-        <UsageCount Value="11"/>
+        <TopLine Value="32"/>
+        <CursorPos X="10" Y="50"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit27>
       <Unit28>
         <Filename Value="../../../../../../../Programme/lazarus140/fpc/2.6.4/source/packages/fcl-xml/src/dom.pp"/>
         <UnitName Value="DOM"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="248"/>
         <CursorPos X="3" Y="195"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../components/fpvectorial/dxfvectorialreader.pas"/>
@@ -228,11 +225,10 @@
       </Unit32>
       <Unit33>
         <Filename Value="../../components/fpvectorial/svgvectorialreader.pas"/>
-        <UnitName Value="svgvectorialreader"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="227"/>
         <CursorPos X="3" Y="229"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit33>
       <Unit34>
@@ -257,10 +253,11 @@
       </Unit36>
       <Unit37>
         <Filename Value="../../components/fpvectorial/htmlvectorialreader.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="563"/>
-        <CursorPos X="26" Y="22"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="76"/>
+        <CursorPos X="14" Y="35"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit37>
       <Unit38>
         <Filename Value="../../components/fpvectorial/avisocncgcodereader.pas"/>
@@ -278,11 +275,10 @@
       </Unit39>
       <Unit40>
         <Filename Value="../plugintester/umain.pas"/>
-        <UnitName Value="umain"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="86"/>
         <CursorPos Y="117"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit40>
       <Unit41>
@@ -301,10 +297,10 @@
       <Unit43>
         <Filename Value="../../base/dbintfs/uwlxmodule.pas"/>
         <UnitName Value="uWlxModule"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="436"/>
         <CursorPos Y="465"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit43>
       <Unit44>
@@ -317,19 +313,17 @@
       <Unit45>
         <Filename Value="../../../../../../../Programme/lazarus140/fpc/2.6.4/source/packages/fcl-image/src/fpcanvas.pp"/>
         <UnitName Value="FPCanvas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="279"/>
         <CursorPos X="13" Y="232"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit45>
       <Unit46>
         <Filename Value="../../../../../../../Programme/lazarus140/fpc/2.6.4/source/packages/fcl-image/src/fpcanvas.inc"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="348"/>
         <CursorPos X="21" Y="353"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit46>
       <Unit47>
         <Filename Value="../../../../../../../Programme/lazarus140/fpc/2.6.4/source/packages/fcl-image/src/ftfont.pp"/>
@@ -348,135 +342,166 @@
       <Unit49>
         <Filename Value="../../components/fpvectorial/lasvectorialreader.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="40"/>
+        <TopLine Value="130"/>
         <UsageCount Value="10"/>
       </Unit49>
+      <Unit50>
+        <Filename Value="../../components/synapse/blcksock.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2598"/>
+        <CursorPos Y="2617"/>
+        <UsageCount Value="10"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="../../base/dbintfs/uprometmsgnetwork.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="56"/>
+        <CursorPos X="17" Y="114"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="wlxplugin.pas"/>
+        <UnitName Value="WLXPlugin"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="63"/>
+        <CursorPos X="95" Y="76"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="../../../../../../../Programme/lazarus/fpc/2.6.4/source/rtl/inc/objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="225"/>
+        <CursorPos X="20" Y="241"/>
+        <UsageCount Value="10"/>
+      </Unit53>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="56" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="7808" Column="44" TopLine="7796"/>
       </Position1>
       <Position2>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="57" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="40" Column="10" TopLine="21"/>
       </Position2>
       <Position3>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="59" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="41" Column="3" TopLine="21"/>
       </Position3>
       <Position4>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="61" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="4022" Column="15" TopLine="3995"/>
       </Position4>
       <Position5>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="62" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="4760" Column="27" TopLine="4742"/>
       </Position5>
       <Position6>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="64" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5477" Column="6" TopLine="5459"/>
       </Position6>
       <Position7>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="66" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5480" TopLine="5462"/>
       </Position7>
       <Position8>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="67" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5502" Column="29" TopLine="5481"/>
       </Position8>
       <Position9>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="69" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5476" TopLine="5463"/>
       </Position9>
       <Position10>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="70" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5456" Column="27" TopLine="5442"/>
       </Position10>
       <Position11>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="71" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5478" TopLine="5468"/>
       </Position11>
       <Position12>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="72" TopLine="43"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5479" TopLine="5459"/>
       </Position12>
       <Position13>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="73" TopLine="56"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5478" Column="3" TopLine="5440"/>
       </Position13>
       <Position14>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="74" TopLine="56"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5540" Column="5" TopLine="5520"/>
       </Position14>
       <Position15>
-        <Filename Value="vectorfile.lpr"/>
-        <Caret Line="48" Column="45" TopLine="21"/>
+        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
+        <Caret Line="5660" Column="87" TopLine="5627"/>
       </Position15>
       <Position16>
         <Filename Value="vectorfile.lpr"/>
-        <Caret Line="44" TopLine="21"/>
+        <Caret Line="74" TopLine="55"/>
       </Position16>
       <Position17>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8261" TopLine="8242"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="73" Column="68" TopLine="55"/>
       </Position17>
       <Position18>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8262" TopLine="8242"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="13" Column="32"/>
       </Position18>
       <Position19>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8263" TopLine="8242"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="9" Column="7" TopLine="4"/>
       </Position19>
       <Position20>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8244" TopLine="8237"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="105" Column="13" TopLine="83"/>
       </Position20>
       <Position21>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8245" TopLine="8237"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="108" Column="15" TopLine="88"/>
       </Position21>
       <Position22>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8247" TopLine="8237"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="107" Column="28" TopLine="88"/>
       </Position22>
       <Position23>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8248" TopLine="8237"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="109" Column="23" TopLine="86"/>
       </Position23>
       <Position24>
         <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8249" TopLine="8237"/>
+        <Caret Line="1571" Column="48" TopLine="1554"/>
       </Position24>
       <Position25>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8806" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="111" Column="59" TopLine="80"/>
       </Position25>
       <Position26>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8807" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="110" Column="11" TopLine="91"/>
       </Position26>
       <Position27>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8808" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="117" TopLine="85"/>
       </Position27>
       <Position28>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8809" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="116" Column="5" TopLine="82"/>
       </Position28>
       <Position29>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8810" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="109" TopLine="82"/>
       </Position29>
       <Position30>
-        <Filename Value="../../components/fpvectorial/fpvectorial.pas"/>
-        <Caret Line="8812" TopLine="8787"/>
+        <Filename Value="vectorfile.lpr"/>
+        <Caret Line="110" TopLine="82"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="2">
+    <BreakPoints Count="3">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
@@ -491,6 +516,13 @@
         <Source Value="../../components/fpvectorial/pdfvectorialreader.pas"/>
         <Line Value="204"/>
       </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="vectorfile.lpr"/>
+        <Line Value="109"/>
+      </Item3>
     </BreakPoints>
     <Watches Count="1">
       <Item1>
